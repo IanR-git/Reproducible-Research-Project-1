@@ -396,16 +396,17 @@ Steps”, x = “Steps”, y = “Frequency”)</p>
 <h1>recreating activityDT from scratch then making the new factor
 variable. (No need to, just want to be clear on what the entire process
 is.)</h1>
-<p>activityDT &lt;- data.table::fread(input = “data/activity.csv”)
-activityDT[, date := as.POSIXct(date, format = “%Y-%m-%d”)] activityDT[,
-<code>Day of Week</code>:= weekdays(x = date)] activityDT[grepl(pattern
-= “Monday|Tuesday|Wednesday|Thursday|Friday”, x =
-<code>Day of Week</code>), “weekday or weekend”] &lt;- “weekday”
-activityDT[grepl(pattern = “Saturday|Sunday”, x =
+<p>activityDT &lt;- data.table::fread(input = “data/activity.csv”)</p>
+<p>activityDT[, date := as.POSIXct(date, format = “%Y-%m-%d”)]</p>
+<p>activityDT[, <code>Day of Week</code>:= weekdays(x = date)]</p>
+<p>activityDT[grepl(pattern =
+“Monday|Tuesday|Wednesday|Thursday|Friday”, x =
+<code>Day of Week</code>), “weekday or weekend”] &lt;- “weekday”</p>
+<p>activityDT[grepl(pattern = “Saturday|Sunday”, x =
 <code>Day of Week</code>), “weekday or weekend”] &lt;- “weekend”
 activityDT[, <code>weekday or weekend</code> :=
-as.factor(<code>weekday or weekend</code>)] head(activityDT, 10)
-activityDT[is.na(steps), “steps”] &lt;- activityDT[, c(lapply(.SD,
+as.factor(<code>weekday or weekend</code>)] head(activityDT, 10)</p>
+<p>activityDT[is.na(steps), “steps”] &lt;- activityDT[, c(lapply(.SD,
 median, na.rm = TRUE)), .SDcols = c(“steps”)] IntervalDT &lt;-
 activityDT[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c(“steps”),
 by = .(interval, <code>weekday or weekend</code>)]</p>
