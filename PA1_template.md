@@ -2,7 +2,7 @@
 title: "Reproducible Research: Peer Assessment 1"
 output:
   html_document:
-    keep_md: true
+  
 date: "2026-10-28"
 ---
 
